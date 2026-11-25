@@ -1,0 +1,6 @@
+# El repositorio guarda LF; los scripts y configuraciones que corren dentro de los
+# contenedores Linux deben conservarlo en cualquier sistema.
+* text=auto
+*.sh text eol=lf
+*.conf text eol=lf
+*.yml text eol=lf

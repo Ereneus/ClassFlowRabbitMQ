@@ -1,0 +1,17 @@
+# Secretos
+.env
+.env.*
+!.env.example
+
+# Datos locales y respaldos
+*.log
+*.bak
+data/
+
+# Sistema operativo y editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
