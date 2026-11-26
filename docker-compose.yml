@@ -14,12 +14,15 @@
 x-rabbitmq-node: &rabbitmq-node
   restart: unless-stopped
   image: rabbitmq:3.13-management-alpine
+  # En el primer arranque rabbitmq-1 intenta contactar a rabbitmq-2 (que aun no existe)
+  # antes de iniciar solo, y eso puede tardar ~4 min. Durante start_period los fallos
+  # del healthcheck no cuentan, asi que no se marca unhealthy mientras arranca.
   healthcheck:
     test: ["CMD", "rabbitmq-diagnostics", "-q", "check_running"]
     interval: 10s
     timeout: 10s
-    retries: 12
-    start_period: 20s
+    retries: 6
+    start_period: 300s
   networks:
     - classflow-back-net
 
